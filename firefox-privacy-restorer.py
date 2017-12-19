@@ -10,6 +10,7 @@ import os
 import glob
 import argparse
 import traceback
+import json
 
 if sys.version_info < (3, 5):
     sys.exit("Error: Python 3.5 or newer is required!")
@@ -28,7 +29,6 @@ PREFS = {
     "datareporting.healthreport.about.reportUrl" : PHONY_URL,
     "datareporting.healthreport.uploadEnabled" : False,
     "datareporting.policy.dataSubmissionEnabled" : False,
-    "experiments.manifest.uri" : False,
     "privacy.donottrackheader.enabled" : True,
     "privacy.donottrackheader.value" : 1,
     "social.whitelist" : "",
@@ -56,12 +56,7 @@ def gen_user_pref_call(key, val):
     res = "user_pref(\""
 
     # Generate a javascript constant for the given value, dependent on type
-    if type(val) is bool:
-        val = "true" if val else "false"
-    elif type(val) is str:
-        val = "\"" + str(val) + "\""
-    else:
-        val = str(val)
+    val = json.dumps(val)
     
     res += str(key)
     res += "\", "
