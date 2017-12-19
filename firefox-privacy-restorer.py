@@ -40,6 +40,8 @@ PREFS = {
     "toolkit.telemetry.firstShutdownPing.enabled" : False,
     "toolkit.telemetry.server" : PHONY_URL,
     "app.shield.optoutstudies.enabled" : False,
+    "experiments.enabled" : False
+    "experiments.manifest.uri" : PHONY_URL
     "extensions.pocket.enabled" : False,
     "extensions.pocket.api" : PHONY_URL
 }
